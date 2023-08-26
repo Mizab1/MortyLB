@@ -1,0 +1,50 @@
+
+Todo:
+  Misc Task: 
+
+  Add Lucky Blocks Mechanics:
+    ✔ Add Placing and breaking mechanics @done
+    ✔ Add Models @done
+    ✔ Add Textures @done
+    ✔ Create Generic Loots @done
+
+  Custom Items:
+    ✔ Rick Armor
+    ✔ Pickle Rick Sword (Test in mp)
+    ✔ Laser Gun (Test in mp)
+    ✔ Portal Gun, TPs you wherever you're looking, needs cooldown
+    ☐ Mr. Meseeks Box, right click for a random buff
+    ☐ Invisibility Belt, can work the same way as the force stealth from before 
+    ✔ Totem of undying reskin of morty
+
+  Loots:
+    Bad:
+      ✔ zombie_horde @done
+      ✔ lava @done
+      ✔ prison @done
+      ✔ spawn_slime @done
+      ✔ spawn_magma @done
+      ✔ spawn_witch @done
+      ✔ spawn_skeleton_jokey @done
+      ✔ OP Zombie @done
+      ✔ Bad Effects @done
+      ✔ Look up trap @done
+
+    Good:
+      ✔ Basic Tools @done
+      ✔ basic_armor @done
+      ✔ iron_armor @done
+      ✔ enchanted_tools @done
+      ✔ tame_dog @done
+      ✔ rare_blocks @done
+      ✔ bow @done
+      ✔ ender_pearl @done
+      ✔ sponge @done
+      ✔ golden apple @done
+      ✔ Drops potion @done
+      ✔ Drop pet horse spawn egg @done
+      ✔ drop notch apple @done
+      ✔ drop various food @done
+
+    Test:
+
