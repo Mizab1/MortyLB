@@ -8,6 +8,7 @@ import { portalGunLootTable } from "../items/PortalGunItem";
 import { pickleSwordLootTable } from "../items/PickleSword";
 import { laserGunLootTable } from "../items/LaserGunItem";
 import { mortyTotemLootTable } from "../items/MortyTotem";
+import { meseeksBoxLootTable } from "../items/MeseeksBox";
 
 // ! Only loot tables reside here!
 
@@ -115,6 +116,10 @@ LootTable("good_loot", {
         {
           type: "minecraft:loot_table",
           name: "default:loots/laser_gun",
+        },
+        {
+          type: "minecraft:loot_table",
+          name: "default:loots/meseeks_box",
         },
       ],
     },
@@ -784,3 +789,4 @@ mortyTotemLootTable();
 invisibilityItemLootTable();
 portalGunLootTable();
 laserGunLootTable();
+meseeksBoxLootTable();

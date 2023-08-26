@@ -1,4 +1,11 @@
-import { MCFunction, Score, Selector, effect, execute } from "sandstone";
+import {
+  LootTable,
+  MCFunction,
+  NBTObject,
+  Selector,
+  execute,
+  nbtParser,
+} from "sandstone";
 import { rngEffects } from "../Tick";
 import { uniform } from "../lib/uniform";
 
@@ -31,7 +38,7 @@ export const meseeksBoxLogic = MCFunction("items/meseeks_box_logic", () => {
     "health_boost",
     "absorption",
     "saturation",
-    "levitation",
+    // "levitation",
     // "glowing",
     "slow_falling",
     "conduit_power",
@@ -47,6 +54,40 @@ export const meseeksBoxLogic = MCFunction("items/meseeks_box_logic", () => {
   effects.forEach((value, idx) => {
     execute
       .if(rngEffects.equalTo(idx))
-      .run.effect.give(self, value, 10, 1, true);
+      .run.effect.give(self, value, 10, 4, true);
   });
 });
+
+// Loot table
+const meseeksBoxNbt: NBTObject = {
+  display: {
+    Name: '{"text":"Meseeks Box","color":"red","italic":false}',
+    Lore: [
+      '{"text":"Right-Click to get a random buff","color":"dark_purple","italic":false}',
+    ],
+  },
+  HideFlags: 255,
+  CustomModelData: 100004,
+};
+export const meseeksBoxLootTable = () =>
+  LootTable(`loots/meseeks_box`, {
+    type: "generic",
+    pools: [
+      {
+        rolls: 1,
+        bonus_rolls: 0,
+        entries: [
+          {
+            type: "minecraft:item",
+            name: "minecraft:carrot_on_a_stick",
+            functions: [
+              {
+                function: "set_nbt",
+                tag: nbtParser(meseeksBoxNbt),
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  });

@@ -116,7 +116,7 @@ export const validateBreaking = (armorStandTagName: string, cf) => {
 // Mcfunction that player can call
 MCFunction("give_lb", () => {
   giveLuckyBlock(
-    "Ahsoka Tano Lucky Block",
+    "Rick and Morty Lucky Block",
     typeOfLuckyBlocks[0].name,
     typeOfLuckyBlocks[0].customModelData
   );

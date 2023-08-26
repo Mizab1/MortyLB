@@ -3,7 +3,6 @@ import {
   LootTableInstance,
   MCFunction,
   MCFunctionInstance,
-  Score,
   Selector,
   _,
   execute,
@@ -11,9 +10,9 @@ import {
   loot,
   rel,
 } from "sandstone";
+import { rng } from "../Tick";
 import { uniform } from "../lib/uniform";
 import { availableBadLoots } from "./GenericBadLoots";
-import { rng } from "../Tick";
 
 const self = Selector("@s");
 

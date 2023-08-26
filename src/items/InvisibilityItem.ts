@@ -1,20 +1,18 @@
-import { log } from "console";
 import {
-  _,
-  Selector,
-  tellraw,
-  effect,
-  give,
-  execute,
-  kill,
-  PredicateInstance,
-  Predicate,
-  NBTObject,
-  NBT,
-  nbtParser,
   LootTable,
-  say,
   MCFunction,
+  NBT,
+  NBTObject,
+  Predicate,
+  PredicateInstance,
+  Selector,
+  _,
+  effect,
+  execute,
+  give,
+  kill,
+  nbtParser,
+  tellraw,
 } from "sandstone";
 
 const self = Selector("@s");

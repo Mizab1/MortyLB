@@ -8,8 +8,6 @@ import {
   nbtParser,
   particle,
   raw,
-  rel,
-  say,
   tag,
 } from "sandstone";
 import { raycast } from "sandstone-raycast";
