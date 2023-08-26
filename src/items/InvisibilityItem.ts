@@ -13,6 +13,7 @@ import {
   NBT,
   nbtParser,
   LootTable,
+  say,
 } from "sandstone";
 
 const self = Selector("@s");
@@ -38,7 +39,7 @@ export const invisibilityItemLogic = () => {
       text: "You are already invisible, You cannot use this item again",
       color: "red",
     });
-    give(self, "minecraft:ender_pearl" + invisibilityItemNBT, 1);
+    give(self, "minecraft:ender_pearl" + nbtParser(invisibilityItemNBT), 1);
   });
 
   // kill the ender pearl
