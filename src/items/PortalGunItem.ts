@@ -29,7 +29,7 @@ const portalGunCooldownObj: ObjectiveInstance = Objective.create(
 );
 const portalGunCooldown = portalGunCooldownObj("@s");
 
-export const portalGunLogic = () => {
+export const portalGunLogic = MCFunction("items/portal_gun_logic", () => {
   _.if(portalGunCooldown.matches(0), () => {
     tag(self).add("used_portal_gun");
     execute.anchored("eyes").run(() => {
@@ -51,7 +51,7 @@ export const portalGunLogic = () => {
     // Add a cooldown
     portalGunCooldown.set(60);
   });
-};
+});
 export const portalGunHighlight = () => {
   tag(self).add("is_holding_portal_gun");
   _.if(portalGunCooldown.matches([Infinity, 0]), () => {

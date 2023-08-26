@@ -16,7 +16,7 @@ import { raycast } from "sandstone-raycast";
 
 const self = Selector("@s");
 
-export const laserGunLogic = () => {
+export const laserGunLogic = MCFunction("items/laser_gun_logic", () => {
   tag(self).add("used_laser_gun");
   execute.anchored("eyes").run(() => {
     raycast(
@@ -58,7 +58,7 @@ export const laserGunLogic = () => {
     );
   });
   tag(self).remove("used_laser_gun");
-};
+});
 
 // Loot table
 const laserGunNbt: NBTObject = {
