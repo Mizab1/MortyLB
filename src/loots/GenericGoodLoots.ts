@@ -1,5 +1,13 @@
 import { LootTable } from "sandstone";
-import { invisibilityItemNBT } from "../items/InvisibilityItem";
+import {
+  invisibilityItemNBT,
+  invisibilityItemLootTable,
+} from "../items/InvisibilityItem";
+import { rickArmorLootTable } from "../items/RickArmor";
+import { portalGunLootTable } from "../items/PortalGunItem";
+import { pickleSwordLootTable } from "../items/PickleSword";
+import { laserGunLootTable } from "../items/LaserGunItem";
+import { mortyTotemLootTable } from "../items/MortyTotem";
 
 // ! Only loot tables reside here!
 
@@ -82,33 +90,31 @@ LootTable("good_loot", {
           type: "minecraft:loot_table",
           name: "default:loots/foods",
         },
+
+        // Custom Item
         {
           type: "minecraft:loot_table",
-          name: "default:loots/ahsoka_tano_light_saber",
+          name: "default:loots/pickle_sword",
         },
         {
           type: "minecraft:loot_table",
-          name: "default:loots/ahsoka_tano_armor",
+          name: "default:loots/rick_armor",
         },
         {
           type: "minecraft:loot_table",
-          name: "default:loots/pushback_item",
+          name: "default:loots/morty_totem",
         },
         {
           type: "minecraft:loot_table",
-          name: "default:loots/jedi_holocron",
+          name: "default:loots/invisibility_belt",
         },
         {
           type: "minecraft:loot_table",
-          name: "default:loots/invisibility_item",
+          name: "default:loots/portal_gun",
         },
         {
           type: "minecraft:loot_table",
-          name: "default:loots/red_light_saber",
-        },
-        {
-          type: "minecraft:loot_table",
-          name: "default:loots/beskar_spear",
+          name: "default:loots/laser_gun",
         },
       ],
     },
@@ -772,204 +778,9 @@ LootTable(`loots/foods`, {
 });
 
 // Custom Items
-LootTable(`loots/ahsoka_tano_light_saber`, {
-  type: "generic",
-  pools: [
-    {
-      rolls: 1,
-      bonus_rolls: 0,
-      entries: [
-        {
-          type: "minecraft:item",
-          name: "minecraft:netherite_sword",
-          functions: [
-            {
-              function: "set_nbt",
-              tag: `{display:{Name:'{"text":"Ashoka Tano\\'s Light Saber","color":"gold","italic":false}'},HideFlags:255,Unbreakable:1b,CustomModelData:100001,Enchantments:[{id:"minecraft:sharpness",lvl:7s},{id:"minecraft:knockback",lvl:1s},{id:"minecraft:fire_aspect",lvl:1s}],AttributeModifiers:[{AttributeName:"generic.attack_speed",Name:"generic.attack_speed",Amount:2,Operation:2,UUID:[I;1261247379,-1168358935,-1906785588,-61268182]},{AttributeName:"generic.movement_speed",Name:"generic.movement_speed",Amount:0.5,Operation:1,UUID:[I;-2001857077,326846995,-1933569876,427536912]}]}`,
-            },
-          ],
-        },
-      ],
-    },
-    {
-      rolls: 1,
-      bonus_rolls: 0,
-      entries: [
-        {
-          type: "minecraft:item",
-          name: "minecraft:netherite_sword",
-          functions: [
-            {
-              function: "set_nbt",
-              tag: `{display:{Name:'{"text":"Ashoka Tano\\'s Light Saber","color":"gold","italic":false}'},HideFlags:255,Unbreakable:1b,CustomModelData:100001,Enchantments:[{id:"minecraft:sharpness",lvl:7s},{id:"minecraft:knockback",lvl:1s},{id:"minecraft:fire_aspect",lvl:1s}],AttributeModifiers:[{AttributeName:"generic.attack_speed",Name:"generic.attack_speed",Amount:2,Operation:2,UUID:[I;1261247379,-1168358935,-1906785588,-61268182]},{AttributeName:"generic.movement_speed",Name:"generic.movement_speed",Amount:0.5,Operation:1,UUID:[I;-2001857077,326846995,-1933569876,427536912]}]}`,
-            },
-          ],
-        },
-      ],
-    },
-  ],
-});
-LootTable(`loots/ahsoka_tano_armor`, {
-  type: "generic",
-  pools: [
-    {
-      rolls: 1,
-      bonus_rolls: 0,
-      entries: [
-        {
-          type: "minecraft:item",
-          name: "minecraft:netherite_helmet",
-          functions: [
-            {
-              function: "set_nbt",
-              tag: `{display:{Name:'{"text":"Ahsoka Tano\\'s Helmet","color":"gold","italic":false}'},HideFlags:255,ahsoka_helmet:1b,AttributeModifiers:[{AttributeName:"generic.max_health",Name:"generic.max_health",Amount:0.2,Operation:1,UUID:[I;-1600194419,796740124,-2061262516,-1732951350], Slot:"head"}]}`,
-            },
-          ],
-        },
-        {
-          type: "minecraft:item",
-          name: "minecraft:netherite_chestplate",
-          functions: [
-            {
-              function: "set_nbt",
-              tag: `{display:{Name:'{"text":"Ahsoka Tano\\'s Chestplate","color":"gold","italic":false}'},HideFlags:255,ahsoka_chestplate:1b,AttributeModifiers:[{AttributeName:"generic.max_health",Name:"generic.max_health",Amount:0.2,Operation:1,UUID:[I;-939962238,-821476971,-1719916940,1110537383], Slot:"chest"},{AttributeName:"generic.knockback_resistance",Name:"generic.knockback_resistance",Amount:0.1,Operation:1,UUID:[I;2070244310,-771078295,-1685789333,-1480455025], Slot:"chest"}]}`,
-            },
-          ],
-        },
-        {
-          type: "minecraft:item",
-          name: "minecraft:netherite_leggings",
-          functions: [
-            {
-              function: "set_nbt",
-              tag: `{display:{Name:'{"text":"Ahsoka Tano\\'s Leggings","color":"gold","italic":false}'},HideFlags:255,ahsoka_leggings:1b,AttributeModifiers:[{AttributeName:"generic.max_health",Name:"generic.max_health",Amount:0.1,Operation:1,UUID:[I;1865019265,-1397667338,-1820938560,-219611821], Slot:"legs"}]}`,
-            },
-          ],
-        },
-        {
-          type: "minecraft:item",
-          name: "minecraft:netherite_boots",
-          functions: [
-            {
-              function: "set_nbt",
-              tag: `{display:{Name:'{"text":"Ahsoka Tano\\'s Boots","color":"gold","italic":false}'},HideFlags:255,ahsoka_boots:1b,AttributeModifiers:[{AttributeName:"generic.max_health",Name:"generic.max_health",Amount:0.1,Operation:1,UUID:[I;1773482327,37572041,-1658102902,-939607436], Slot:"feet"}]}`,
-            },
-          ],
-        },
-      ],
-    },
-  ],
-});
-LootTable(`loots/pushback_item`, {
-  type: "generic",
-  pools: [
-    {
-      rolls: 1,
-      bonus_rolls: 0,
-      entries: [
-        {
-          type: "minecraft:item",
-          name: "minecraft:ender_pearl",
-          functions: [
-            {
-              function: "set_nbt",
-              tag: `{display:{Name:'{"text":"Force Push Item","italic":false}'},CustomModelData:100001,pushback_item:1}`,
-            },
-            {
-              function: "set_count",
-              count: {
-                type: "uniform",
-                min: 2,
-                max: 6,
-              },
-            },
-          ],
-        },
-      ],
-    },
-  ],
-});
-LootTable(`loots/jedi_holocron`, {
-  pools: [
-    {
-      rolls: 1,
-      bonus_rolls: 1,
-      entries: [
-        {
-          type: "minecraft:item",
-          name: "minecraft:totem_of_undying",
-        },
-      ],
-    },
-  ],
-});
-LootTable(`loots/invisibility_item`, {
-  pools: [
-    {
-      rolls: 1,
-      bonus_rolls: 1,
-      entries: [
-        {
-          type: "minecraft:item",
-          name: "minecraft:ender_pearl",
-          functions: [
-            {
-              function: "set_nbt",
-              tag: invisibilityItemNBT,
-            },
-            {
-              function: "set_count",
-              count: {
-                type: "uniform",
-                min: 2,
-                max: 6,
-              },
-            },
-          ],
-        },
-      ],
-    },
-  ],
-});
-LootTable(`loots/red_light_saber`, {
-  type: "generic",
-  pools: [
-    {
-      rolls: 1,
-      bonus_rolls: 0,
-      entries: [
-        {
-          type: "minecraft:item",
-          name: "minecraft:carrot_on_a_stick",
-          functions: [
-            {
-              function: "set_nbt",
-              tag: `{display:{Name:'{"text":"Red Light Saber","color":"red","italic":false}',Lore:['{"text":"Right-Click to use lightning ability","color":"dark_purple","italic":false}']},HideFlags:255,CustomModelData:100001,AttributeModifiers:[{AttributeName:"generic.attack_damage",Name:"generic.attack_damage",Amount:4,Operation:0,UUID:[I;-1984893098,-440646192,-1326906271,-1844454393]}]}`,
-            },
-          ],
-        },
-      ],
-    },
-  ],
-});
-LootTable(`loots/beskar_spear`, {
-  type: "generic",
-  pools: [
-    {
-      rolls: 1,
-      bonus_rolls: 0,
-      entries: [
-        {
-          type: "minecraft:item",
-          name: "minecraft:carrot_on_a_stick",
-          functions: [
-            {
-              function: "set_nbt",
-              tag: `{display:{Name:'{"text":"Beskar Spear","color":"red","italic":false}',Lore:['{"text":"Right-Click to use reach ability","color":"dark_purple","italic":false}']},HideFlags:255,CustomModelData:100002,AttributeModifiers:[{AttributeName:"generic.attack_damage",Name:"generic.attack_damage",Amount:4,Operation:0,UUID:[I;2051517231,7553137,-1362097383,-402637939]}]}`,
-            },
-          ],
-        },
-      ],
-    },
-  ],
-});
+pickleSwordLootTable();
+rickArmorLootTable();
+mortyTotemLootTable();
+invisibilityItemLootTable();
+portalGunLootTable();
+laserGunLootTable();

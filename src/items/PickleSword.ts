@@ -1,7 +1,9 @@
 import {
   Advancement,
+  LootTable,
   MCFunction,
   NBT,
+  NBTObject,
   Objective,
   ObjectiveInstance,
   Score,
@@ -11,6 +13,7 @@ import {
   data,
   execute,
   kill,
+  nbtParser,
   raw,
   rel,
   summon,
@@ -88,7 +91,7 @@ const logic = MCFunction("items/pickle_sword_logic", () => {
     );
 
     // Set the timer
-    timerForPickle.set(8);
+    timerForPickle.set(6);
 
     // remove the new tag
     tag(self).remove("new");
@@ -144,3 +147,33 @@ Advancement("hurt_player_with_pickle_sword", {
     function: "default:items/pickle_sword_logic",
   },
 });
+
+// Loot table
+const pickleSwordNbt: NBTObject = {
+  display: { Name: '{"text":"Pickle Sword","color":"gold","italic":false}' },
+  HideFlags: 255,
+  Unbreakable: NBT.byte(1),
+  CustomModelData: 100001,
+};
+export const pickleSwordLootTable = () =>
+  LootTable(`loots/pickle_sword`, {
+    type: "generic",
+    pools: [
+      {
+        rolls: 1,
+        bonus_rolls: 0,
+        entries: [
+          {
+            type: "minecraft:item",
+            name: "minecraft:netherite_sword",
+            functions: [
+              {
+                function: "set_nbt",
+                tag: nbtParser(pickleSwordNbt),
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  });

@@ -15,6 +15,9 @@ import {
   SelectorClass,
   particle,
   loc,
+  LootTable,
+  NBTObject,
+  nbtParser,
 } from "sandstone";
 import { raycast } from "sandstone-raycast";
 
@@ -106,3 +109,37 @@ export const PortalGunCooldownLogic = () => {
     portalGunCooldown.set(0);
   });
 };
+
+// Loot table
+const portalGunNbt: NBTObject = {
+  display: {
+    Name: '{"text":"Portal Gun","color":"red","italic":false}',
+    Lore: [
+      '{"text":"Right-Click to use Teleport Ability","color":"dark_purple","italic":false}',
+    ],
+  },
+  HideFlags: 255,
+  CustomModelData: 100002,
+};
+export const portalGunLootTable = () =>
+  LootTable(`loots/portal_gun`, {
+    type: "generic",
+    pools: [
+      {
+        rolls: 1,
+        bonus_rolls: 0,
+        entries: [
+          {
+            type: "minecraft:item",
+            name: "minecraft:carrot_on_a_stick",
+            functions: [
+              {
+                function: "set_nbt",
+                tag: nbtParser(portalGunNbt),
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  });

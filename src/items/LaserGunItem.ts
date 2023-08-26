@@ -1,8 +1,11 @@
 import {
+  LootTable,
   MCFunction,
+  NBTObject,
   Selector,
   execute,
   loc,
+  nbtParser,
   particle,
   raw,
   rel,
@@ -56,3 +59,37 @@ export const laserGunLogic = () => {
   });
   tag(self).remove("used_laser_gun");
 };
+
+// Loot table
+const laserGunNbt: NBTObject = {
+  display: {
+    Name: '{"text":"Laser Gun","color":"red","italic":false}',
+    Lore: [
+      '{"text":"Right-Click to use Shoot","color":"dark_purple","italic":false}',
+    ],
+  },
+  HideFlags: 255,
+  CustomModelData: 100001,
+};
+export const laserGunLootTable = () =>
+  LootTable(`loots/laser_gun`, {
+    type: "generic",
+    pools: [
+      {
+        rolls: 1,
+        bonus_rolls: 0,
+        entries: [
+          {
+            type: "minecraft:item",
+            name: "minecraft:carrot_on_a_stick",
+            functions: [
+              {
+                function: "set_nbt",
+                tag: nbtParser(laserGunNbt),
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  });
