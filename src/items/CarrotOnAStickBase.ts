@@ -13,6 +13,7 @@ import {
   portalGunHighlight,
   portalGunLogic,
 } from "./PortalGunItem";
+import { meseeksBoxLogic } from "./MeseeksBox";
 
 const usedCarrotOnAStickObj: ObjectiveInstance = Objective.create(
   "used_coas",
@@ -56,8 +57,14 @@ export const carrotOnAStickItemsLogic = () => {
       /* Laser Gun */
       // if the player used the custom item item
       itemCheckingForCOAS("laser_gun", 100001, laserGunLogic);
+
+      /* Meseeks Box */
+      // if the player used the custom item item
+      itemCheckingForCOAS("meseeks_box", 100004, meseeksBoxLogic);
     });
 };
+
+// PRIVATE FUNCTIONS
 // Create the predicate and test if the player is folding the custom item
 // ! This function must be run from the context of the player
 const itemCheckingForCOAS = (

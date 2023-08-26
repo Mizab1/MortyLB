@@ -22,6 +22,7 @@ export const internal: ObjectiveInstance = Objective.create(
   "dummy"
 );
 export const rng: Score = internal("rng");
+export const rngEffects: Score = internal("rng_effects");
 
 // ** Game functions **//
 MCFunction(
