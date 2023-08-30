@@ -5,6 +5,7 @@ import {
   Selector,
   execute,
   nbtParser,
+  playsound,
 } from "sandstone";
 import { rngEffects } from "../Tick";
 import { uniform } from "../lib/uniform";
@@ -50,6 +51,8 @@ export const meseeksBoxLogic = MCFunction("items/meseeks_box_logic", () => {
   // Generate Random Number
   rngEffects.set(uniform(0, effects.length - 1));
 
+  // Play Sounds
+  playsound("minecraft:sfx.meseeks", "master", self);
   // Give random effect to the player when they use the item
   effects.forEach((value, idx) => {
     execute
@@ -61,7 +64,7 @@ export const meseeksBoxLogic = MCFunction("items/meseeks_box_logic", () => {
 // Loot table
 const meseeksBoxNbt: NBTObject = {
   display: {
-    Name: '{"text":"Meseeks Box","color":"red","italic":false}',
+    Name: '{"text":"Mr. Meseeks Box","color":"red","italic":false}',
     Lore: [
       '{"text":"Right-Click to get a random buff","color":"dark_purple","italic":false}',
     ],

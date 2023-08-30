@@ -9,6 +9,7 @@ import {
   kill,
   loot,
   rel,
+  say,
 } from "sandstone";
 import { rng } from "../Tick";
 import { uniform } from "../lib/uniform";
@@ -49,12 +50,10 @@ const randomLoot: LootTableInstance = LootTable("random_loot", {
       entries: [
         {
           type: "minecraft:loot_table",
-          weight: 2,
           name: "default:good_loot",
         },
         {
           type: "minecraft:loot_table",
-          weight: 1,
           name: "default:bad_loot",
         },
       ],
@@ -78,7 +77,7 @@ export const pickRandom: MCFunctionInstance = MCFunction(
           execute.if(rng.equalTo(i)).run.functionCmd(`default:loots/${value}`);
         });
         kill(self);
-        rng.set(0);
+        // rng.set(0);
       });
   }
 );

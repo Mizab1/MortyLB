@@ -7,7 +7,9 @@ import {
   loc,
   nbtParser,
   particle,
+  playsound,
   raw,
+  rel,
   tag,
 } from "sandstone";
 import { raycast } from "sandstone-raycast";
@@ -16,6 +18,7 @@ const self = Selector("@s");
 
 export const laserGunLogic = MCFunction("items/laser_gun_logic", () => {
   tag(self).add("used_laser_gun");
+  playsound("minecraft:sfx.laser", "master", "@a", rel(0, 0, 0));
   execute.anchored("eyes").run(() => {
     raycast(
       "raycast/laser_gun/main",

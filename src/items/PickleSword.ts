@@ -150,7 +150,9 @@ Advancement("hurt_player_with_pickle_sword", {
 
 // Loot table
 const pickleSwordNbt: NBTObject = {
-  display: { Name: '{"text":"Pickle Sword","color":"gold","italic":false}' },
+  display: {
+    Name: '{"text":"Pickle Rick Sword","color":"gold","italic":false}',
+  },
   HideFlags: 255,
   Unbreakable: NBT.byte(1),
   CustomModelData: 100001,

@@ -12,6 +12,8 @@ import {
   give,
   kill,
   nbtParser,
+  playsound,
+  rel,
   tellraw,
 } from "sandstone";
 
@@ -30,6 +32,14 @@ export const invisibilityItemLogic = MCFunction(
   () => {
     // check if the player in invisible and has the invisibility tag
     _.if(Selector("@s", { predicate: `!${isInvisiblePredicate}` }), () => {
+      playsound(
+        "minecraft:block.beacon.power_select",
+        "master",
+        "@a",
+        rel(0, 0, 0),
+        1,
+        2
+      );
       tellraw(self, {
         text: "You are now Invisible, remember to remove any armor you have and don't hold any weapon!",
         color: "gold",
@@ -37,7 +47,7 @@ export const invisibilityItemLogic = MCFunction(
       effect.give(self, "minecraft:invisibility", 15, 0, true);
     }).else(() => {
       tellraw(self, {
-        text: "You are already invisible, You cannot use this item again",
+        text: "You are already invisible, You cannot use this item",
         color: "red",
       });
       give(self, "minecraft:ender_pearl" + nbtParser(invisibilityItemNBT), 1);

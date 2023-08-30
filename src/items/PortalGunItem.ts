@@ -10,6 +10,7 @@ import {
   execute,
   nbtParser,
   particle,
+  playsound,
   rel,
   summon,
   tag,
@@ -28,6 +29,7 @@ const portalGunCooldown = portalGunCooldownObj("@s");
 export const portalGunLogic = MCFunction("items/portal_gun_logic", () => {
   _.if(portalGunCooldown.matches(0), () => {
     tag(self).add("used_portal_gun");
+    playsound("minecraft:sfx.portal_gun_2", "master", "@s");
     execute.anchored("eyes").run(() => {
       raycast(
         "raycast/portal_gun/main",

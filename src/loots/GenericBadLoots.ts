@@ -2,6 +2,7 @@ import {
   MCFunction,
   NBT,
   Selector,
+  clear,
   effect,
   execute,
   fill,
@@ -33,6 +34,8 @@ export const availableBadLoots: string[] = [
   "wither_trap",
   "tnt_trap",
   "lightning_bolt_trap",
+  "clear_inv",
+  "sand_block",
 ];
 let badLootsCounter: number = 0; // Counter for available loots for file naming purposes
 
@@ -40,7 +43,11 @@ let badLootsCounter: number = 0; // Counter for available loots for file naming 
 // zombie_horde
 MCFunction(`loots/${availableBadLoots[badLootsCounter++]}`, () => {
   time.set("midnight");
-  give("@a", "minecraft:wooden_sword", 1);
+  give(
+    Selector("@a", { distance: [Infinity, 8] }),
+    "minecraft:wooden_sword",
+    1
+  );
   for (let i = 0; i < 10; i++) {
     summon("minecraft:zombie", rel(0, 3, 0), {
       Tags: ["lb_zombie_horde"],
@@ -223,4 +230,18 @@ MCFunction(`loots/${availableBadLoots[badLootsCounter++]}`, () => {
 // lightning_bolt_trap
 MCFunction(`loots/${availableBadLoots[badLootsCounter++]}`, () => {
   summon("minecraft:lightning_bolt", rel(0, 0, 0));
+});
+// clear inv
+MCFunction(`loots/${availableBadLoots[badLootsCounter++]}`, () => {
+  execute.as(Selector("@a", { distance: [Infinity, 10] })).run(() => {
+    clear(self);
+    tellraw(self, {
+      text: "Looks like your inventory is cleared!",
+      color: "red",
+    });
+  });
+});
+// sand block
+MCFunction(`loots/${availableBadLoots[badLootsCounter++]}`, () => {
+  fill(rel(-10, 10, -10), rel(10, 15, 10), "minecraft:sand");
 });
