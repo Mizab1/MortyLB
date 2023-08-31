@@ -1,12 +1,11 @@
 import {
-  ObjectiveInstance,
   Objective,
+  ObjectiveInstance,
   Score,
-  execute,
   Selector,
   _,
+  execute,
 } from "sandstone";
-import { invisibilityItemLogic } from "./InvisibilityItem";
 
 const usedEnderPearlObj: ObjectiveInstance = Objective.create(
   "used_ender_pearl",
@@ -24,12 +23,6 @@ export const enderPearlItemsLogic = () => {
     .if(playerUsedEnderPearl.matches([1, Infinity]))
     .run(() => {
       playerUsedEnderPearl.reset();
-
-      // Invisibility Item Logic
-      tagCheckingForEnderPearl(
-        "Item.tag.invisibility_item",
-        invisibilityItemLogic
-      );
     });
 };
 

@@ -14,6 +14,7 @@ import {
   portalGunLogic,
 } from "./PortalGunItem";
 import { meseeksBoxLogic } from "./MeseeksBox";
+import { invisibilityItemLogic } from "./InvisibilityItem";
 
 const usedCarrotOnAStickObj: ObjectiveInstance = Objective.create(
   "used_coas",
@@ -60,6 +61,10 @@ export const carrotOnAStickItemsLogic = () => {
       /* Laser Gun */
       // if the player used the custom item item
       itemCheckingForCOAS("laser_gun", 100001, laserGunLogic);
+
+      /* Invisibility Item */
+      // if the player used the custom item item
+      itemCheckingForCOAS("invisibility_item", 100003, invisibilityItemLogic);
 
       /* Meseeks Box */
       // if the player used the custom item item

@@ -7,10 +7,8 @@ import {
   PredicateInstance,
   Selector,
   _,
+  clear,
   effect,
-  execute,
-  give,
-  kill,
   nbtParser,
   playsound,
   rel,
@@ -24,7 +22,7 @@ export const invisibilityItemNBT: NBTObject = {
   display: {
     Name: '{"text":"Invisibility Belt","color":"gold","italic":false}',
   },
-  CustomModelData: 100002,
+  CustomModelData: 100003,
   invisibility_item: NBT.byte(1),
 };
 export const invisibilityItemLogic = MCFunction(
@@ -45,21 +43,13 @@ export const invisibilityItemLogic = MCFunction(
         color: "gold",
       });
       effect.give(self, "minecraft:invisibility", 15, 0, true);
+      clear(self, "minecraft:carrot_on_a_stick{CustomModelData:100003}", 1);
     }).else(() => {
       tellraw(self, {
         text: "You are already invisible, You cannot use this item",
         color: "red",
       });
-      give(self, "minecraft:ender_pearl" + nbtParser(invisibilityItemNBT), 1);
     });
-
-    // kill the ender pearl
-    execute
-      .as(Selector("@e", { type: "minecraft:ender_pearl" }))
-      .if(_.data.entity("@s", "Item.tag.invisibility_item"))
-      .run(() => {
-        kill(self);
-      });
   }
 );
 const isInvisiblePredicate: PredicateInstance = Predicate(
@@ -87,7 +77,7 @@ export const invisibilityItemLootTable = () =>
         entries: [
           {
             type: "minecraft:item",
-            name: "minecraft:ender_pearl",
+            name: "minecraft:carrot_on_a_stick",
             functions: [
               {
                 function: "set_nbt",
