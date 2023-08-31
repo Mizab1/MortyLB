@@ -88,7 +88,7 @@ const laserGunNbt: NBTObject = {
   display: {
     Name: '{"text":"Laser Gun","color":"red","italic":false}',
     Lore: [
-      '{"text":"Right-Click to use Shoot","color":"dark_purple","italic":false}',
+      '{"text":"Right-Click to Shoot","color":"dark_purple","italic":false}',
     ],
   },
   HideFlags: 255,
