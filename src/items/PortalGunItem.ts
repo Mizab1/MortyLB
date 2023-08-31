@@ -45,7 +45,14 @@ export const portalGunLogic = MCFunction("items/portal_gun_logic", () => {
           MCFunction("raycast/portal_gun/hit", () => {
             tp(rel(0, 0, 0));
             particle("minecraft:portal", rel(0, 1, 0), [0.5, 0.5, 0.5], 1, 100);
-            playsound("minecraft:sfx.portal_gun_2", "master", "@s");
+            playsound(
+              "minecraft:sfx.portal_gun_2",
+              "master",
+              "@s",
+              rel(0, 0, 0),
+              0.3,
+              1
+            );
             // Add a cooldown
             portalGunCooldown.set(60);
           }),
@@ -109,7 +116,7 @@ export const portalGunHighlight = () => {
     rel(0, -600, 0)
   );
 };
-export const PortalGunCooldownLogic = MCFunction("test", () => {
+export const PortalGunCooldownLogic = () => {
   // Run asat player
   _.if(_.not(portalGunCooldown.matches([Infinity, 0])), () => {
     portalGunCooldown.remove(1);
@@ -125,7 +132,7 @@ export const PortalGunCooldownLogic = MCFunction("test", () => {
   }).else(() => {
     portalGunCooldown.set(0);
   });
-});
+};
 
 // Loot table
 const portalGunNbt: NBTObject = {
