@@ -3,6 +3,7 @@ import {
   MCFunction,
   NBTObject,
   Selector,
+  clear,
   execute,
   nbtParser,
   playsound,
@@ -21,7 +22,7 @@ export const meseeksBoxLogic = MCFunction("items/meseeks_box_logic", () => {
     "haste",
     // "mining_fatigue",
     "strength",
-    "instant_health",
+    // "instant_health",
     // "instant_damage",
     "jump_boost",
     // "nausea",
@@ -45,7 +46,7 @@ export const meseeksBoxLogic = MCFunction("items/meseeks_box_logic", () => {
     "conduit_power",
     "dolphins_grace",
     // "darkness",
-    "hero_of_the_village",
+    // "hero_of_the_village",
   ];
 
   // Generate Random Number
@@ -53,11 +54,15 @@ export const meseeksBoxLogic = MCFunction("items/meseeks_box_logic", () => {
 
   // Play Sounds
   playsound("minecraft:sfx.meseeks", "master", self);
+
+  // Clear the meseeks box from the player
+  clear(self, "minecraft:carrot_on_a_stick{CustomModelData:100004}", 1);
+
   // Give random effect to the player when they use the item
   effects.forEach((value, idx) => {
     execute
       .if(rngEffects.equalTo(idx))
-      .run.effect.give(self, value, 10, 4, true);
+      .run.effect.give(self, value, 15, 4, true);
   });
 });
 
