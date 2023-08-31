@@ -37,10 +37,6 @@ LootTable("good_loot", {
         },
         {
           type: "minecraft:loot_table",
-          name: "default:loots/tame_dog",
-        },
-        {
-          type: "minecraft:loot_table",
           name: "default:loots/rare_blocks",
         },
         {
