@@ -32,7 +32,6 @@ const portalGunCooldown = portalGunCooldownObj("@s");
 export const portalGunLogic = MCFunction("items/portal_gun_logic", () => {
   _.if(portalGunCooldown.matches(0), () => {
     tag(self).add("used_portal_gun");
-    playsound("minecraft:sfx.portal_gun_2", "master", "@s");
     execute
       .anchored("eyes")
       .positioned(loc(0, 0, 2))
@@ -46,6 +45,7 @@ export const portalGunLogic = MCFunction("items/portal_gun_logic", () => {
           MCFunction("raycast/portal_gun/hit", () => {
             tp(rel(0, 0, 0));
             particle("minecraft:portal", rel(0, 1, 0), [0.5, 0.5, 0.5], 1, 100);
+            playsound("minecraft:sfx.portal_gun_2", "master", "@s");
             // Add a cooldown
             portalGunCooldown.set(60);
           }),
