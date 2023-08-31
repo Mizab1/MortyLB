@@ -61,7 +61,7 @@ export const laserGunLogic = MCFunction("items/laser_gun_logic", () => {
               })
             )
             .run(() => {
-              raw(`damage @s 2 minecraft:magic`);
+              raw(`damage @s 3 minecraft:magic`);
             });
         }),
         1,
