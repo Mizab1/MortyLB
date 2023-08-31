@@ -7,7 +7,7 @@ import {
   Selector,
   _,
 } from "sandstone";
-import { laserGunLogic } from "./LaserGunItem";
+import { laserGunCooldownLogic, laserGunLogic } from "./LaserGunItem";
 import {
   PortalGunCooldownLogic,
   portalGunHighlight,
@@ -39,8 +39,10 @@ export const carrotOnAStickItemsLogic = () => {
     .run(() => {
       itemCheckingForCOAS("portal_gun_highlight", 100002, portalGunHighlight);
 
-      // Red light Saber Cooldown Logic
+      // Portal Gun Cooldown Logic
       PortalGunCooldownLogic();
+      // Laser Gun Cooldown Logic
+      laserGunCooldownLogic();
     });
 
   // Detect when the player When used the item
