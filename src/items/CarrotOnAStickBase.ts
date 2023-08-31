@@ -22,6 +22,7 @@ const usedCarrotOnAStickObj: ObjectiveInstance = Objective.create(
 export const playerUsedCarrotOnAStick: Score = usedCarrotOnAStickObj("@s");
 
 const self = Selector("@s");
+export const portalGunPredicateName: string = "portal_gun";
 
 /**
  * Executes the logic for carrotOnAStickItemsLogic.
@@ -36,7 +37,7 @@ export const carrotOnAStickItemsLogic = () => {
     .as("@a")
     .at(self)
     .run(() => {
-      itemCheckingForCOAS("red_lightsaber", 100002, portalGunHighlight);
+      itemCheckingForCOAS("portal_gun_highlight", 100002, portalGunHighlight);
 
       // Red light Saber Cooldown Logic
       PortalGunCooldownLogic();
@@ -52,7 +53,7 @@ export const carrotOnAStickItemsLogic = () => {
 
       /* Portal Gun */
       // if the player used the custom item item
-      itemCheckingForCOAS("red_lightsaber", 100002, portalGunLogic);
+      itemCheckingForCOAS(portalGunPredicateName, 100002, portalGunLogic);
 
       /* Laser Gun */
       // if the player used the custom item item
