@@ -7,7 +7,11 @@ import {
   Selector,
   _,
 } from "sandstone";
-import { laserGunCooldownLogic, laserGunLogic } from "./LaserGunItem";
+import {
+  excludeUsers,
+  laserGunCooldownLogic,
+  laserGunLogic,
+} from "./LaserGunItem";
 import {
   PortalGunCooldownLogic,
   portalGunHighlight,
@@ -24,6 +28,7 @@ export const playerUsedCarrotOnAStick: Score = usedCarrotOnAStickObj("@s");
 
 const self = Selector("@s");
 export const portalGunPredicateName: string = "portal_gun";
+export const laserGunPredicateName: string = "laser_gun";
 
 /**
  * Executes the logic for carrotOnAStickItemsLogic.
@@ -38,7 +43,12 @@ export const carrotOnAStickItemsLogic = () => {
     .as("@a")
     .at(self)
     .run(() => {
-      itemCheckingForCOAS("portal_gun_highlight", 100002, portalGunHighlight);
+      itemCheckingForCOAS(
+        "portal_gun_highlight",
+        100002,
+        null,
+        portalGunHighlight
+      );
 
       // Portal Gun Cooldown Logic
       PortalGunCooldownLogic();
@@ -56,19 +66,29 @@ export const carrotOnAStickItemsLogic = () => {
 
       /* Portal Gun */
       // if the player used the custom item item
-      itemCheckingForCOAS(portalGunPredicateName, 100002, portalGunLogic);
+      itemCheckingForCOAS(portalGunPredicateName, 100002, null, portalGunLogic);
 
       /* Laser Gun */
       // if the player used the custom item item
-      itemCheckingForCOAS("laser_gun", 100001, laserGunLogic);
+      itemCheckingForCOAS(
+        laserGunPredicateName,
+        100001,
+        excludeUsers,
+        laserGunLogic
+      );
 
       /* Invisibility Item */
       // if the player used the custom item item
-      itemCheckingForCOAS("invisibility_item", 100003, invisibilityItemLogic);
+      itemCheckingForCOAS(
+        "invisibility_item",
+        100003,
+        null,
+        invisibilityItemLogic
+      );
 
       /* Meseeks Box */
       // if the player used the custom item item
-      itemCheckingForCOAS("meseeks_box", 100004, meseeksBoxLogic);
+      itemCheckingForCOAS("meseeks_box", 100004, null, meseeksBoxLogic);
     });
 };
 
@@ -78,6 +98,7 @@ export const carrotOnAStickItemsLogic = () => {
 const itemCheckingForCOAS = (
   predicateName: string,
   customModelData: number,
+  excludeTag: string,
   cb: { (): void }
 ) => {
   // Create a  custom predicate
@@ -102,7 +123,16 @@ const itemCheckingForCOAS = (
   );
 
   // check if the player is using the custom item from which the predicate was created
-  _.if(Selector("@s", { predicate: predicate }), () => {
-    cb();
-  });
+  if (excludeTag === null) {
+    _.if(Selector("@s", { predicate: predicate }), () => {
+      cb();
+    });
+  } else {
+    _.if(
+      Selector("@s", { predicate: predicate, tag: `!${excludeTag}` }),
+      () => {
+        cb();
+      }
+    );
+  }
 };
